@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The New Level · Rappresentanti d'Istituto Cartesio</title>
+<meta name="description" content="The New Level: il prossimo passo per il Cartesio parte da noi. Scopri il programma, i membri e sostienici.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================= RESET & BASE ================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a14;
+  --bg-alt: #10101c;
+  --card: #16162a;
+  --card-hover: #1c1c34;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f2f2f8;
+  --text-muted: #9a9aad;
+  --primary: #6c5ce7;
+  --primary-light: #a29bfe;
+  --accent: #00d4ff;
+  --gradient: linear-gradient(135deg, #6c5ce7 0%, #00d4ff 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(0, 212, 255, 0.2));
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(108, 92, 231, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(0, 212, 255, 0.1), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(162, 155, 254, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(108, 92, 231, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 92, 231, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
+  pointer-events: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container { max-width: 1150px; margin: 0 auto; padding: 0 24px; }
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10, 10, 20, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1150px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.05rem;
+}
+
+.logo-mark {
+  background: var(--gradient); color: #fff;
+  padding: 6px 10px; border-radius: 8px;
+  font-size: 0.85rem; letter-spacing: 0.05em;
+}
+
+.nav-links { display: flex; gap: 6px; align-items: center; }
+
+.nav-links a {
+  padding: 8px 14px; border-radius: 8px;
+  font-size: 0.92rem; font-weight: 500;
+  color: var(--text-muted); transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--text); background: var(--card);
+}
+
+.menu-toggle {
+  display: none; background: none; border: none;
+  flex-direction: column; gap: 5px; cursor: pointer; padding: 8px;
+}
+
+.menu-toggle span {
+  width: 24px; height: 2px; background: var(--text);
+  border-radius: 2px; transition: var(--transition);
+}
+
+.menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ================= PAGE SYSTEM ================= */
+.page { display: none; padding-top: 80px; animation: fadeIn 0.4s ease; }
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative; min-height: calc(100vh - 80px);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 60px 24px; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(108, 92, 231, 0.3), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(0, 212, 255, 0.25), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(162, 155, 254, 0.15), transparent 60%);
+  z-index: 0; animation: pulse 8s ease-in-out infinite alternate;
+}
+
+.hero-bg::before,
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+
+.hero-bg::before {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.6), transparent 70%);
+  top: 10%; left: -100px;
+  animation: float 12s ease-in-out infinite;
+}
+
+.hero-bg::after {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.5), transparent 70%);
+  bottom: 10%; right: -80px;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.1); opacity: 1; }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+.badge {
+  display: inline-block; padding: 8px 18px; border-radius: 100px;
+  background: var(--gradient-soft); border: 1px solid var(--border);
+  font-size: 0.82rem; font-weight: 500; color: var(--primary-light);
+  margin-bottom: 24px; backdrop-filter: blur(10px);
+}
+
+.hero-title { font-size: clamp(2.8rem, 8vw, 5.5rem); margin-bottom: 16px; }
+.hero-subtitle { font-size: clamp(1.15rem, 2.5vw, 1.6rem); font-weight: 500; color: var(--text); margin-bottom: 20px; }
+.hero-desc { font-size: 1.02rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 36px; }
+
+.hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.scroll-hint {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: var(--text-muted); font-size: 1.4rem; animation: bounce 2s infinite;
+  z-index: 1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 100px;
+  font-family: 'Inter', sans-serif; font-size: 0.98rem; font-weight: 600;
+  cursor: pointer; border: none; transition: var(--transition); text-align: center;
+}
+
+.btn-primary {
+  background: var(--gradient); color: #fff;
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(108, 92, 231, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(22, 22, 42, 0.6); color: var(--text);
+  border: 1px solid var(--border); backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover { background: var(--card); border-color: var(--primary); }
+
+.btn-lg {
+  padding: 18px 36px;
+  font-size: 1.05rem;
+}
+
+/* ================= SECTIONS ================= */
+.section { padding: 80px 0; position: relative; }
+.section-alt { background: rgba(16, 16, 28, 0.6); }
+.section > .container { position: relative; z-index: 1; }
+
+.section-header { text-align: center; max-width: 720px; margin: 0 auto 50px; }
+
+.section-tag {
+  display: inline-block; padding: 6px 14px; border-radius: 100px;
+  background: var(--gradient-soft); border: 1px solid var(--border);
+  font-size: 0.8rem; font-weight: 500; color: var(--primary-light);
+  margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+.section-header h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 12px; }
+.section-sub { color: var(--text-muted); font-size: 1rem; margin-top: 8px; }
+
+.lead-text {
+  font-size: 1.15rem; color: var(--text-muted); text-align: center;
+  max-width: 780px; margin: 0 auto; line-height: 1.7;
+}
+
+.lead-text strong { color: var(--text); }
+
+/* ================= PRIORITÀ ================= */
+.priority-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px; margin-bottom: 40px;
+}
+
+.priority-card {
+  background: linear-gradient(135deg, rgba(22, 22, 42, 0.9), rgba(28, 28, 52, 0.6));
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 24px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+
+.priority-card::before {
+  content: '';
+  position: absolute; top: -50%; right: -50%;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.15), transparent 70%);
+  opacity: 0; transition: var(--transition);
+}
+
+.priority-card:hover::before { opacity: 1; }
+
+.priority-card:hover {
+  transform: translateY(-4px); border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+}
+
+.priority-icon {
+  font-size: 2rem; margin-bottom: 14px;
+  display: inline-block;
+  width: 56px; height: 56px;
+  line-height: 56px; text-align: center;
+  background: var(--gradient-soft);
+  border-radius: 14px; border: 1px solid var(--border);
+}
+
+.priority-card h3 { font-size: 1.15rem; margin-bottom: 8px; position: relative; z-index: 1; }
+.priority-card p { color: var(--text-muted); font-size: 0.94rem; position: relative; z-index: 1; }
+.center-btn { text-align: center; }
+
+/* ================= MEMBERS ================= */
+.members-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;
+}
+
+.member-card {
+  background: linear-gradient(160deg, var(--card) 0%, rgba(28, 28, 52, 0.8) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 18px;
+  text-align: center; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+
+.member-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.08), transparent 60%);
+  opacity: 0; transition: var(--transition);
+}
+
+.member-card:hover::after { opacity: 1; }
+
+.member-card:hover {
+  transform: translateY(-6px); border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+}
+
+.member-avatar {
+  width: 76px; height: 76px; margin: 0 auto 16px; border-radius: 50%;
+  background: var(--gradient);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.4rem; color: #fff;
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.4);
+  position: relative;
+}
+
+.member-avatar::before {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  background: var(--gradient);
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(6px);
+}
+
+.member-name { font-size: 1.05rem; margin-bottom: 4px; }
+.member-role { color: var(--text-muted); font-size: 0.88rem; }
+
+/* ================= CTA ================= */
+.section-cta { padding: 80px 0; }
+
+.cta-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 212, 255, 0.1));
+  border: 1px solid var(--border);
+  border-radius: 24px; padding: 60px 40px; text-align: center;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(108, 92, 231, 0.2), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.15), transparent 40%);
+  pointer-events: none;
+}
+
+.cta-box h2, .cta-box p, .cta-box a { position: relative; z-index: 1; }
+
+.cta-box h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 16px; }
+.cta-box p { color: var(--text-muted); max-width: 620px; margin: 0 auto 28px; }
+
+/* ================= PAGE HERO ================= */
+.page-hero {
+  text-align: center; padding: 60px 24px 40px; position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(108, 92, 231, 0.18), transparent 60%);
+  border-bottom: 1px solid var(--border); margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.15), transparent 70%);
+  filter: blur(60px); pointer-events: none;
+}
+
+.page-hero > * { position: relative; z-index: 1; }
+
+.page-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin: 14px 0 12px; }
+.page-hero-sub { color: var(--text-muted); max-width: 640px; margin: 0 auto; font-size: 1.05rem; }
+
+/* ================= CHI SIAMO ================= */
+.content-block { max-width: 800px; margin: 0 auto 60px; }
+
+.content-block p {
+  font-size: 1.05rem; color: var(--text-muted);
+  margin-bottom: 18px; line-height: 1.75;
+}
+
+.content-block p strong { color: var(--text); }
+.content-block .lead-text { text-align: left; font-size: 1.2rem; color: var(--text); margin-bottom: 24px; }
+
+.highlight-quote {
+  margin-top: 30px; padding: 24px 28px;
+  background: var(--gradient-soft); border-left: 4px solid var(--primary);
+  border-radius: var(--radius-sm); font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem; font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.values-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;
+}
+
+.value-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px 18px;
+  text-align: center; transition: var(--transition);
+}
+
+.value-item:hover {
+  border-color: var(--primary); transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(108, 92, 231, 0.15);
+}
+
+.value-icon {
+  font-size: 1.8rem; margin-bottom: 10px;
+  display: inline-block;
+  width: 50px; height: 50px; line-height: 50px;
+  background: var(--gradient-soft); border-radius: 12px;
+}
+
+.value-item h3 { font-size: 1rem; }
+
+/* ================= PROGRAMMA ================= */
+.program-area { margin-bottom: 70px; }
+
+.area-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.area-number {
+  font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700;
+  background: var(--gradient); -webkit-background-clip: text;
+  background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.area-header h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+.proposal-card {
+  background: linear-gradient(160deg, var(--card) 0%, rgba(22, 22, 42, 0.7) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  margin-bottom: 20px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+
+.proposal-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gradient);
+  opacity: 0; transition: var(--transition);
+}
+
+.proposal-card:hover::before { opacity: 1; }
+
+.proposal-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1);
+}
+
+.proposal-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+
+.tag {
+  font-size: 0.74rem; padding: 4px 10px; border-radius: 100px;
+  background: rgba(108, 92, 231, 0.15); color: var(--primary-light);
+  border: 1px solid rgba(108, 92, 231, 0.3); font-weight: 500;
+}
+
+.proposal-card p { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 12px; line-height: 1.7; }
+
+.obiettivo {
+  background: rgba(10, 10, 20, 0.6); border-radius: var(--radius-sm);
+  padding: 14px 16px; font-size: 0.92rem; color: var(--text-muted);
+  margin-top: 8px; border-left: 3px solid var(--accent);
+}
+
+.obiettivo strong { color: var(--accent); }
+
+/* ================= STATUS BADGES ================= */
+.status-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 600;
+  padding: 4px 12px; border-radius: 100px; margin-top: 14px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.status-da-discutere { background: rgba(255, 193, 7, 0.15); color: #ffc107; }
+.status-presentata { background: rgba(33, 150, 243, 0.15); color: #42a5f5; }
+.status-attesa { background: rgba(255, 152, 0, 0.15); color: #ffa726; }
+.status-approvata { background: rgba(76, 175, 80, 0.15); color: #66bb6a; }
+.status-corso { background: rgba(0, 212, 255, 0.15); color: #00d4ff; }
+.status-non-realis { background: rgba(244, 67, 54, 0.15); color: #ef5350; }
+
+/* ================= PARTECIPA — VOTA / INSTAGRAM ================= */
+.vote-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.vote-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(22, 22, 42, 0.9), rgba(28, 28, 52, 0.7));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 44px 32px;
+  text-align: center;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.vote-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(108, 92, 231, 0.2);
+}
+
+.vote-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(108, 92, 231, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.18), transparent 50%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.vote-card > * { position: relative; z-index: 1; }
+
+.vote-icon-big {
+  font-size: 3rem;
+  margin-bottom: 18px;
+  display: inline-block;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.vote-card h3 {
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  margin-bottom: 14px;
+}
+
+.vote-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.vote-card p strong { color: var(--text); }
+
+.vote-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 100px;
+  background: var(--gradient);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 12px 32px rgba(108, 92, 231, 0.45);
+  transition: var(--transition);
+}
+
+.vote-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(108, 92, 231, 0.6);
+}
+
+.vote-cta svg { flex-shrink: 0; }
+
+/* QR BOX */
+.qr-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  display: inline-block;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.qr-box img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  border-radius: 8px;
+}
+
+.qr-caption {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.qr-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* BANNER VOTO */
+.vote-banner {
+  margin-top: 60px;
+  text-align: center;
+  padding: 40px 24px;
+  background: var(--gradient-soft);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vote-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(108, 92, 231, 0.25), transparent 40%),
+    radial-gradient(circle at 90% 50%, rgba(0, 212, 255, 0.2), transparent 40%);
+  pointer-events: none;
+}
+
+.vote-banner > * { position: relative; z-index: 1; }
+
+.vote-banner h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  margin-bottom: 12px;
+}
+
+.vote-banner p {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+
+/* ================= TRASPARENZA ================= */
+.status-legend {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 30px; justify-content: center;
+}
+
+.status-legend .status-badge { margin-top: 0; }
+
+.trasparenza-table {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+
+.tr-row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  align-items: center; font-size: 0.92rem;
+}
+
+.tr-row:last-child { border-bottom: none; }
+
+.tr-head {
+  background: var(--bg-alt); font-weight: 600; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);
+}
+
+.tr-row .status-badge { margin-top: 0; }
+
+/* ================= CONTATTI ================= */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-qr-hero {
+  background: linear-gradient(160deg, rgba(108, 92, 231, 0.18), rgba(0, 212, 255, 0.12));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-qr-hero::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent 70%);
+  filter: blur(50px); pointer-events: none;
+}
+
+.contact-qr-hero > * { position: relative; z-index: 1; }
+
+.contact-qr-hero h3 { font-size: 1.4rem; margin-bottom: 8px; }
+.contact-qr-hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+.contact-qr-hero .qr-box { margin: 0 auto 20px; }
+.contact-qr-hero .qr-box img { width: 220px; height: 220px; }
+.contact-qr-hero .qr-caption { font-size: 1.1rem; }
+
+.contact-list {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.contact-card:hover {
+  transform: translateX(4px);
+  border-color: var(--primary);
+  background: var(--card-hover);
+  box-shadow: 0 12px 30px rgba(108, 92, 231, 0.15);
+}
+
+.contact-icon {
+  width: 54px; height: 54px; flex-shrink: 0;
+  border-radius: 14px;
+  background: var(--gradient-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary-light);
+}
+
+.contact-info h3 { font-size: 1.05rem; margin-bottom: 2px; }
+.contact-info p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ================= NOTE / FOOTER ================= */
+.note-edit { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 24px; opacity: 0.7; }
+
+.footer {
+  border-top: 1px solid var(--border); padding: 28px 0;
+  background: rgba(16, 16, 28, 0.9);
+  margin-top: 40px; position: relative; z-index: 1;
+}
+
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px; font-size: 0.88rem; color: var(--text-muted);
+}
+
+.footer-inner strong { color: var(--text); }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .vote-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .menu-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed; top: 68px; left: 0; right: 0;
+    flex-direction: column; background: rgba(10, 10, 20, 0.98);
+    backdrop-filter: blur(20px); padding: 20px; gap: 4px;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-150%); opacity: 0; pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+  .nav-links a { width: 100%; text-align: center; padding: 12px; font-size: 1rem; }
+
+  .section { padding: 56px 0; }
+  .hero { min-height: auto; padding: 100px 20px 60px; }
+  .proposal-card { padding: 22px; }
+
+  .tr-row { grid-template-columns: 1fr; gap: 6px; }
+  .tr-head { display: none; }
+  .tr-row > div:last-child { color: var(--text-muted); font-size: 0.82rem; }
+
+  .cta-box { padding: 40px 24px; }
+  .vote-card { padding: 32px 22px; }
+  .qr-box img { width: 170px; height: 170px; }
+  .contact-qr-hero .qr-box img { width: 200px; height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .logo-text { display: none; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .contact-card { flex-direction: column; text-align: center; }
+  .vote-cta { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="logo" data-page="home">
+      <span class="logo-mark">TNL</span>
+      <span class="logo-text">The New Level</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Apri menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#chi-siamo" data-page="chi-siamo">Chi siamo</a>
+      <a href="#programma" data-page="programma">Programma</a>
+      <a href="#partecipa" data-page="partecipa">Vota</a>
+      <a href="#trasparenza" data-page="trasparenza">Trasparenza</a>
+      <a href="#contatti" data-page="contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HOME ================= -->
+  <section class="page active" id="page-home">
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <span class="badge">⚡ Elezioni Rappresentanti d'Istituto · Cartesio</span>
+        <h1 class="hero-title">THE <span class="gradient-text">NEW LEVEL</span></h1>
+        <p class="hero-subtitle">Il prossimo passo per il Cartesio parte da noi.</p>
+        <p class="hero-desc">
+          Siamo un gruppo di studenti che vuole contribuire a una scuola più partecipata,
+          attiva e attenta alle esigenze di tutti. Qui puoi conoscere le nostre idee,
+          i nostri obiettivi e le iniziative che vorremmo portare al Cartesio.
+        </p>
+        <div class="hero-buttons">
+          <a href="#programma" class="btn btn-primary" data-page="programma">Scopri il programma →</a>
+          <a href="#partecipa" class="btn btn-secondary" data-page="partecipa">✋ Vota The New Level</a>
+        </div>
+      </div>
+      <div class="scroll-hint">↓</div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Il nostro obiettivo</span>
+          <h2>Una nuova fase per il Cartesio</h2>
+        </div>
+        <p class="lead-text">
+          Con una nuova preside e una nuova fase per il nostro istituto, crediamo sia il momento
+          di ripartire con <strong>nuove idee e nuove possibilità</strong>. Vogliamo ascoltare gli studenti,
+          individuare ciò che può essere migliorato e collaborare per rendere la scuola un luogo
+          in cui partecipare attivamente.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Le nostre priorità</span>
+          <h2>Le idee che vogliamo portare avanti</h2>
+        </div>
+        <div class="priority-grid">
+          <div class="priority-card">
+            <div class="priority-icon">🎉</div>
+            <h3>Vivere la scuola</h3>
+            <p>Cogestione, feste e tornei per rendere la vita scolastica più coinvolgente.</p>
+          </div>
+          <div class="priority-card">
+            <div class="priority-icon">🚀</div>
+            <h3>Opportunità per tutti</h3>
+            <p>Corsi pomeridiani e sportello PCTO per crescere anche fuori dall'aula.</p>
+          </div>
+          <div class="priority-card">
+            <div class="priority-icon">💛</div>
+            <h3>Una scuola più solidale</h3>
+            <p>Un fondo di solidarietà per non lasciare nessuno indietro.</p>
+          </div>
+          <div class="priority-card">
+            <div class="priority-icon">🔒</div>
+            <h3>Più sicurezza e trasparenza</h3>
+            <p>Parcheggi, distributori e informazioni chiare sui bandi.</p>
+          </div>
+        </div>
+        <div class="center-btn">
+          <a href="#programma" class="btn btn-primary" data-page="programma">Leggi tutte le proposte →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Il gruppo</span>
+          <h2>I 5 membri di The New Level</h2>
+          <p class="section-sub">Le persone che portano avanti le idee del gruppo.</p>
+        </div>
+        <div class="members-grid">
+          <div class="member-card">
+            <div class="member-avatar">M1</div>
+            <h3 class="member-name">Membro 1</h3>
+            <p class="member-role">Capogruppo</p>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">M2</div>
+            <h3 class="member-name">Membro 2</h3>
+            <p class="member-role">Programma</p>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">M3</div>
+            <h3 class="member-name">Membro 3</h3>
+            <p class="member-role">Comunicazione</p>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">M4</div>
+            <h3 class="member-name">Membro 4</h3>
+            <p class="member-role">Social & Eventi</p>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">M5</div>
+            <h3 class="member-name">Membro 5</h3>
+            <p class="member-role">Relazioni esterne</p>
+          </div>
+        </div>
+        <p class="note-edit">✏️ <em>Modifica i nomi e i ruoli nella sezione members-grid.</em></p>
+      </div>
+    </section>
+
+    <!-- CTA VOTO IN HOME -->
+    <section class="section section-cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Il Cartesio non è solo nostro: è di tutti.</h2>
+          <p>
+            Se credi in una scuola più partecipata, attiva e attenta alle esigenze di tutti,
+            <strong>vota The New Level</strong>. Il cambiamento parte da un gesto semplice.
+          </p>
+          <a href="#partecipa" class="btn btn-primary btn-lg" data-page="partecipa">✋ Sostienici · Vota The New Level</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ================= CHI SIAMO ================= -->
+  <section class="page" id="page-chi-siamo">
+    <div class="page-hero">
+      <span class="section-tag">Chi siamo</span>
+      <h1>Siamo <span class="gradient-text">THE NEW LEVEL</span></h1>
+    </div>
+    <div class="container">
+      <div class="content-block">
+        <p class="lead-text">
+          Siamo un gruppo di studenti del Cartesio che ha deciso di mettersi in gioco
+          per contribuire alla vita del nostro istituto.
+        </p>
+        <p>
+          Abbiamo scelto il nome <strong>THE NEW LEVEL</strong> perché crediamo che sia il momento
+          di aprire una nuova fase, con idee nuove, più partecipazione e la volontà di
+          migliorare ciò che ci circonda.
+        </p>
+        <p>
+          Non vogliamo limitarci a presentare un elenco di promesse. Vogliamo ascoltare gli studenti,
+          capire quali sono le priorità e portare le loro richieste all'attenzione della scuola.
+        </p>
+        <p>
+          Crediamo nella <strong>collaborazione</strong>, nella <strong>trasparenza</strong> e nella
+          possibilità di trasformare le idee in proposte concrete.
+        </p>
+        <p>
+          Il nostro obiettivo è rappresentare gli studenti con serietà, dare spazio alle loro opinioni
+          e seguire le questioni che ci verranno affidate, comunicando con chiarezza i progressi
+          e le difficoltà.
+        </p>
+        <div class="highlight-quote">
+          Un nuovo inizio, nuove idee, un nuovo livello per il Cartesio.
+        </div>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">🤝</div>
+          <h3>Collaborazione</h3>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🔍</div>
+          <h3>Trasparenza</h3>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">💡</div>
+          <h3>Idee concrete</h3>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">📣</div>
+          <h3>Ascolto</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAMMA ================= -->
+  <section class="page" id="page-programma">
+    <div class="page-hero">
+      <span class="section-tag">Il programma</span>
+      <h1>Le nostre <span class="gradient-text">proposte</span></h1>
+      <p class="page-hero-sub">Tutte le idee, suddivise per argomento. Ogni proposta ha un obiettivo e un primo passo concreto.</p>
+    </div>
+
+    <div class="container">
+      <div class="program-area">
+        <div class="area-header">
+          <span class="area-number">01</span>
+          <h2>Vita scolastica ed eventi</h2>
+        </div>
+
+        <div class="proposal-card">
+          <h3>La cogestione torna al Cartesio</h3>
+          <div class="tags"><span class="tag">Vita scolastica</span><span class="tag">Partecipazione</span></div>
+          <p>Vogliamo riproporre la cogestione al Cartesio, organizzata l'ultima volta circa cinque anni fa, quando molti degli studenti di oggi non avevano ancora avuto l'occasione di viverla, nonostante sia stata ricordata come un'esperienza bellissima.</p>
+          <p>L'idea è organizzare alcune giornate diverse dal solito, con attività, tornei e momenti di condivisione, per rendere la vita scolastica più coinvolgente e dare agli studenti l'opportunità di partecipare anche al di fuori delle normali lezioni.</p>
+          <p>Vorremmo raccogliere le proposte degli studenti e capire quali attività piacerebbe organizzare, cercando di coinvolgere il maggior numero possibile di classi.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> riportare al Cartesio un'esperienza che molti ricordano con piacere e che tanti non hanno mai avuto la possibilità di vivere, collaborando con la scuola per renderla nuovamente possibile.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Feste ed eventi per gli studenti</h3>
+          <div class="tags"><span class="tag">Vita scolastica</span><span class="tag">Socialità</span></div>
+          <p>Vogliamo proporre l'organizzazione di feste ed eventi dedicati agli studenti del Cartesio, per creare occasioni di incontro anche al di fuori delle normali lezioni.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> valutare con la scuola la possibilità di organizzare momenti di socialità, con una gestione adeguata degli spazi, della sicurezza e delle autorizzazioni necessarie.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Tornei di calcio e pallavolo</h3>
+          <div class="tags"><span class="tag">Vita scolastica</span><span class="tag">Sport</span></div>
+          <p>Vorremmo organizzare tornei tra le classi di calcio e pallavolo, dando agli studenti la possibilità di mettersi in gioco, collaborare e vivere momenti di competizione sana.</p>
+          <div class="obiettivo">
+            <strong>Primo passo:</strong> raccoglieremo le adesioni e valuteremo con la scuola gli spazi, i tempi e le modalità per organizzare le partite senza interferire con le attività didattiche.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+      </div>
+
+      <div class="program-area">
+        <div class="area-header">
+          <span class="area-number">02</span>
+          <h2>Opportunità, formazione e solidarietà</h2>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Un fondo di solidarietà per gli studenti</h3>
+          <div class="tags"><span class="tag">Solidarietà</span><span class="tag">Inclusione</span></div>
+          <p>Vorremmo proporre un fondo di solidarietà per aiutare gli studenti che si trovano in difficoltà economica, ad esempio nell'acquisto dei libri di testo o di altri materiali scolastici necessari.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> fare in modo che le difficoltà economiche non diventino un ostacolo alla partecipazione alla vita scolastica. Collaboreremo con la scuola per creare un sistema di aiuto sostenibile, trasparente e rispettoso della privacy, valutando le risorse disponibili e le modalità di accesso.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Uno sportello dedicato al PCTO</h3>
+          <div class="tags"><span class="tag">Formazione</span><span class="tag">Orientamento</span></div>
+          <p>Vorremmo proporre uno sportello informativo dedicato al PCTO, per aiutare gli studenti a orientarsi tra le opportunità disponibili, le procedure da seguire e le informazioni relative ai percorsi formativi.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> creare un punto di riferimento in cui poter chiarire dubbi, segnalare eventuali difficoltà e ricevere indicazioni sui contatti e sulle opportunità offerte dalla scuola e dalle aziende partner.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Corsi pomeridiani e nuove competenze</h3>
+          <div class="tags"><span class="tag">Formazione</span><span class="tag">Competenze</span></div>
+          <p>Vogliamo raccogliere l'interesse degli studenti per corsi pomeridiani su argomenti che possano arricchire il percorso scolastico, come programmazione, cybersecurity, intelligenza artificiale, lingue e preparazione ai test universitari.</p>
+          <div class="obiettivo">
+            <strong>Primo passo:</strong> in base alle richieste, verificheremo con la scuola quali corsi sia possibile attivare, coinvolgendo docenti o altri formatori disponibili e valutando costi, orari e risorse.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Un corso di difesa personale</h3>
+          <div class="tags"><span class="tag">Sicurezza</span><span class="tag">Consapevolezza</span></div>
+          <p>Vorremmo valutare la possibilità di organizzare un corso introduttivo di difesa personale con istruttori qualificati, per promuovere consapevolezza, prevenzione e sicurezza personale.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> un corso accessibile agli studenti interessati, in un ambiente adeguato, concentrato soprattutto sulla prevenzione dei rischi, sulla gestione delle situazioni difficili e sulla richiesta di aiuto.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+      </div>
+
+      <div class="program-area">
+        <div class="area-header">
+          <span class="area-number">03</span>
+          <h2>Servizi, sicurezza e trasparenza</h2>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Macchinette: più attenzione alle esigenze degli studenti</h3>
+          <div class="tags"><span class="tag">Servizi</span><span class="tag">Ascolto</span></div>
+          <p>Vogliamo raccogliere le opinioni degli studenti sui distributori automatici della scuola, considerando la varietà dei prodotti, la disponibilità, i prezzi e le eventuali esigenze alimentari.</p>
+          <div class="obiettivo">
+            <strong>Primo passo:</strong> in base alle segnalazioni, porteremo le richieste all'attenzione della scuola e verificheremo quali miglioramenti siano possibili insieme al gestore del servizio.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Più sicurezza per bici e moto</h3>
+          <div class="tags"><span class="tag">Sicurezza</span><span class="tag">Parcheggi</span></div>
+          <p>Vorremmo proporre il ripristino di un sistema di videosorveglianza rivolto alla zona dei parcheggi per biciclette e motocicli, dove necessario e nel rispetto delle norme sulla privacy.</p>
+          <div class="obiettivo">
+            <strong>Primo passo:</strong> porteremo la questione all'attenzione della dirigenza e valuteremo un confronto con il Comune per verificare la fattibilità dell'intervento, le competenze necessarie e le eventuali risorse disponibili.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+
+        <div class="proposal-card">
+          <h3>Più trasparenza sui bandi e sulle risorse</h3>
+          <div class="tags"><span class="tag">Trasparenza</span><span class="tag">Informazione</span></div>
+          <p>Crediamo che sia importante comprendere come vengono utilizzate le risorse destinate alla scuola e quali progetti vengono realizzati.</p>
+          <div class="obiettivo">
+            <strong>Obiettivo:</strong> proporre una comunicazione più chiara sulle informazioni pubbliche relative ai bandi, ai finanziamenti ottenuti e ai progetti finanziati, nel rispetto delle procedure e dei dati riservati. Favorire una maggiore consapevolezza su come vengono impiegate le risorse e su quali opportunità queste possono offrire agli studenti.
+          </div>
+          <div class="status-badge status-da-discutere">Da discutere</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VOTA / PARTECIPA ================= -->
+  <section class="page" id="page-partecipa">
+    <div class="page-hero">
+      <span class="section-tag">Vota · Sostienici</span>
+      <h1>Dai il tuo voto a <span class="gradient-text">The New Level</span></h1>
+      <p class="page-hero-sub">Se credi in una scuola più partecipata, attiva e attenta alle esigenze di tutti, il  tuo voto è il primo passo per cambiare il Cartesio.</p>
+    </div>
+
+    <div class="container">
+      <div class="vote-layout">
+
+        <!-- CARD VOTO -->
+        <div class="vote-card">
+          <div class="vote-icon-big">✋</div>
+          <h3>Il tuo voto <span class="gradient-text">conta</span></h3>
+          <p>
+            Ogni voto è una voce in più per portare le nostre idee dentro la scuola.
+            <strong>Vota The New Level</strong> e aiutaci a costruire un Cartesio
+            più partecipato, attento e concreto.
+          </p>
+          <a href="https://www.instagram.com/the_new_.level?igsh=" target="_blank" rel="noopener" class="vote-cta">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Seguici su Instagram
+          </a>
+        </div>
+
+        <!-- CARD QR -->
+        <div class="vote-card">
+          <h3>Scansiona il <span class="gradient-text">QR</span></h3>
+          <p>Inquadra il QR con la fotocamera del telefono per aprire subito la nostra pagina Instagram.</p>
+          <div class="qr-box">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https%3A%2F%2Fwww.instagram.com%2Fthe_new_.level&color=6c5ce7&bgcolor=ffffff&margin=10"
+              alt="QR code Instagram The New Level">
+          </div>
+          <div class="qr-caption">📱 <span class="gradient-text">@the_new_.level</span></div>
+          <p class="qr-hint">Puntala, scansionala, seguici ✨</p>
+        </div>
+
+      </div>
+
+      <!-- BANNER VOTO -->
+      <div class="vote-banner">
+        <h2>Un solo gesto, <span class="gradient-text">un grande cambiamento</span></h2>
+        <p>
+          Condividi il nostro profilo con i tuoi compagni, parlane in classe,
+          e il giorno delle elezioni <strong>scegli The New Level</strong>.
+        </p>
+        <a href="https://www.instagram.com/the_new_.level?igsh=" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+          📲 Apri Instagram · @the_new_.level
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRASPARENZA ================= -->
+  <section class="page" id="page-trasparenza">
+    <div class="page-hero">
+      <span class="section-tag">Trasparenza</span>
+      <h1>Registro degli <span class="gradient-text">impegni</span></h1>
+      <p class="page-hero-sub">Aggiornamenti sulle richieste presentate e sulle risposte ricevute dalla scuola.</p>
+    </div>
+    <div class="container">
+      <div class="status-legend">
+        <span class="status-badge status-da-discutere">Da discutere</span>
+        <span class="status-badge status-presentata">Presentata alla scuola</span>
+        <span class="status-badge status-attesa">In attesa di risposta</span>
+        <span class="status-badge status-approvata">Approvata</span>
+        <span class="status-badge status-corso">In corso</span>
+        <span class="status-badge status-non-realis">Non realizzabile</span>
+      </div>
+
+      <div class="trasparenza-table">
+        <div class="tr-row tr-head">
+          <div>Proposta</div>
+          <div>Stato</div>
+          <div>Ultimo aggiornamento</div>
+        </div>
+        <div class="tr-row">
+          <div>Cogestione al Cartesio</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Feste ed eventi</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Tornei di calcio e pallavolo</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Fondo di solidarietà</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Sportello PCTO</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Corsi pomeridiani</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Corso di difesa personale</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Distributori automatici</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Videosorveglianza parcheggi</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+        <div class="tr-row">
+          <div>Trasparenza bandi</div>
+          <div><span class="status-badge status-da-discutere">Da discutere</span></div>
+          <div>—</div>
+        </div>
+      </div>
+      <p class="note-edit">✏️ <em>Aggiorna gli stati man mano che ricevete risposte dalla scuola.</em></p>
+    </div>
+  </section>
+
+  <!-- ================= CONTATTI ================= -->
+  <section class="page" id="page-contatti">
+    <div class="page-hero">
+      <span class="section-tag">Contatti</span>
+      <h1>Restiamo in <span class="gradient-text">contatto</span></h1>
+      <p class="page-hero-sub">Seguici su Instagram per aggiornamenti, sondaggi e iniziative. Il nostro profilo ufficiale è <strong>@the_new_.level</strong>.</p>
+    </div>
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- QR GRANDE -->
+        <div class="contact-qr-hero">
+          <h3>La nostra <span class="gradient-text">Instagram</span></h3>
+          <p>Inquadra il QR con la fotocamera per seguirci subito</p>
+          <div class="qr-box">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.instagram.com%2Fthe_new_.level&color=6c5ce7&bgcolor=ffffff&margin=10"
+              alt="QR code Instagram The New Level">
+          </div>
+          <div class="qr-caption">📱 <span class="gradient-text">@the_new_.level</span></div>
+        </div>
+
+        <!-- LISTA CONTATTI -->
+        <div class="contact-list">
+          <a href="https://www.instagram.com/the_new_.level?igsh=" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="contact-info">
+              <h3>Instagram</h3>
+              <p>@the_new_.level</p>
+            </div>
+          </a>
+
+          <a href="#partecipa" class="contact-card" data-page="partecipa">
+            <div class="contact-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <div class="contact-info">
+              <h3>Vota The New Level</h3>
+              <p>Scopri come sostenerci</p>
+            </div>
+          </a>
+
+          <a href="#programma" class="contact-card" data-page="programma">
+            <div class="contact-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="contact-info">
+              <h3>Il programma</h3>
+              <p>Leggi tutte le nostre proposte</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><strong>The New Level</strong> · Gruppo studentesco per le Elezioni dei Rappresentanti d'Istituto</div>
+    <div>© <span id="year"></span> The New Level · Cartesio</div>
+  </div>
+</footer>
+
+<script>
+// ============ NAVIGAZIONE SPA ============
+const pages = document.querySelectorAll('.page');
+const navLinks = document.querySelectorAll('.nav-links a');
+const menuToggle = document.getElementById('menuToggle');
+const navLinksContainer = document.getElementById('navLinks');
+
+function navigate(pageId) {
+  pages.forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) target.classList.add('active');
+
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.page === pageId);
+  });
+
+  navLinksContainer.classList.remove('open');
+  menuToggle.classList.remove('open');
+
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  history.replaceState(null, '', '#' + pageId);
+}
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('[data-page]');
+  if (link) {
+    e.preventDefault();
+    navigate(link.dataset.page);
+  }
+});
+
+menuToggle.addEventListener('click', () => {
+  navLinksContainer.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+});
+
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#', '') || 'home';
+  navigate(hash);
+});
+
+// ============ ANNO FOOTER ============
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ============ NAVBAR SCROLL EFFECT ============
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  navbar.style.background = window.scrollY > 20
+    ? 'rgba(10, 10, 20, 0.95)'
+    : 'rgba(10, 10, 20, 0.7)';
+});
+</script>
+
+</body>
+</html>
